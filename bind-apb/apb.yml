@@ -1,0 +1,13 @@
+version: 1.0
+name: bind-apb
+description: Bind9 running on CentOS 7
+bindable: False
+async: optional
+metadata:
+  displayName: bind
+plans:
+  - name: default
+    description: This default plan deploys bind-apb
+    free: True
+    metadata: {}
+    parameters: []
