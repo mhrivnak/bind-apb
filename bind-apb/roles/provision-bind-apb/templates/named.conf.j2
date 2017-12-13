@@ -41,8 +41,8 @@ options {
 	pid-file "/run/named/named.pid";
 	session-keyfile "/run/named/session.key";
 
-    forward first;
-    forwarders { 8.8.8.8; };
+    forward only;
+    forwarders { {{ bind_forwarders }} };
 };
 
 logging {

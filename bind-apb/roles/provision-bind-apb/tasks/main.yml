@@ -6,6 +6,18 @@
 ## to OpenShift.
 ##############################################################################
 
+- name: render config template
+  template:
+    src: named.conf.j2
+    dest: /tmp/named.conf
+
+- name: create config map
+  k8s_v1_config_map:
+    name: bind-config
+    namespace: '{{ namespace }}'
+    data:
+      named.conf: "{{ lookup('file', '/tmp/named.conf') }}"
+
 
 ##############################################################################
 ## An OpenShift Origin deployment configuration provides a replication
@@ -36,6 +48,13 @@
         protocol: TCP
       - container_port: 5053
         protocol: UDP
+      volumeMounts:
+        - name: bind-config
+          mountPath: /var/run/secrets/bind/config/
+    volumes:
+      - name: bind-config
+        configMap:
+          name: bind-config
 
 
 ##############################################################################
