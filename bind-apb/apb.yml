@@ -7,7 +7,7 @@ metadata:
   displayName: BIND (APB)
 plans:
   - name: default
-    description: This default plan deploys bind-apb
+    description: Deploys BIND9 as a caching DNS server.
     free: True
     metadata: {}
     parameters:

@@ -28,7 +28,7 @@
     labels:
       app: bind
       service: bind
-    replicas: 2
+    replicas: 1
     selector:
       app: bind
       service: bind
