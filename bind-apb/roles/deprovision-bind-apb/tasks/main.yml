@@ -6,30 +6,19 @@
 ##############################################################################
 
 
-##############################################################################
-## Deprovision a route
-##############################################################################
-#- openshift_v1_route:
-#    name: bind
-#    namespace: '{{ namespace }}'
-#    state: absent
-
-
-##############################################################################
-## Deprovision a service
-##############################################################################
 - k8s_v1_service:
     name: bind
     namespace: '{{ namespace }}'
     state: absent
 
 
-##############################################################################
-## Deprovision a deployment config
-## When removing a Deployment Config, OpenShift will automatically clean up
-## its associated resources like replication controllers and pods
-##############################################################################
 - openshift_v1_deployment_config:
     name: bind
+    namespace: '{{ namespace }}'
+    state: absent
+
+
+- k8s_v1_config_map:
+    name: bind-config
     namespace: '{{ namespace }}'
     state: absent
