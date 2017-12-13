@@ -9,7 +9,7 @@ EXPOSE 5053/udp
 
 # see "Support Arbitrary User IDs"
 # https://docs.openshift.org/latest/creating_images/guidelines.html
-RUN chgrp -R 0 /var/named && chmod -R g=u /var/named
+RUN chgrp -R 0 /etc/named.* && chgrp -R 0 /var/named && chmod -R g=u /var/named
 
 # user named
 USER 25
