@@ -7,6 +7,6 @@ ADD named.conf /etc/named.conf
 EXPOSE 5053/tcp
 EXPOSE 5053/udp
 
-USER named
+USER named:named
 
 CMD /usr/sbin/named -c /etc/named.conf -g
